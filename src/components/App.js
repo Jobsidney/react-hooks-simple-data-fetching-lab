@@ -4,7 +4,7 @@ import React,{useState, useEffect} from "react";
 export default function App() {
     const [image,setImage]=useState('');
     const [loading,setLoading]=useState(false)
-    const [error,setError]=useState('');
+    const [error,setError]=useState('A Random Dog');
     
 
 
@@ -13,13 +13,13 @@ export default function App() {
         .then(resp=>resp.json())
         .then(data=>{
             setImage(data.message);
-            setLoading(loading)
+            setLoading(true)
             console.log(data.message);
         })
     },[])
   return (
     <div>
-        {loading?<p>Loading</p>:<img src={image} alt={error} />}
+        {loading?<img src={image} alt={error} />:<p>Loading</p>}
       
     </div>
   )
